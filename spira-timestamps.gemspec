@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "spira-timestamps"
   spec.version       = Spira::Timestamps::VERSION
   spec.authors       = ["Nicholas Hurden"]
-  spec.email         = ["nicholas@nhurden.com"]
+  spec.email         = ["git@nhurden.com"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
   spec.description   = %q{TODO: Write a longer description. Optional.}
   spec.homepage      = ""
@@ -17,6 +17,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
+
+  spec.add_runtime_dependency "spira", "~> 0.7.1"
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
