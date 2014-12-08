@@ -5,6 +5,7 @@ module Spira
     def self.included(model)
       model.before_save :before_save
       model.extend ClassMethods
+      model.timestamps
     end
 
     # Update this model's `updated` time without making any other changes.
