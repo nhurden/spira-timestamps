@@ -17,8 +17,7 @@ module Spira
     private
 
     def before_save
-      return unless changed?
-      update_timestamps
+      update_timestamps if changed?
     end
 
     def update_timestamps
