@@ -7,6 +7,7 @@ module Spira
       model.extend ClassMethods
     end
 
+    # Update this model's `updated` time without making any other changes.
     def touch
       update_timestamps
       save
@@ -41,6 +42,7 @@ module Spira
     end
 
     module ClassMethods
+      # Add timestamps to this model.
       def timestamps
         property :created, predicate: RDF::DC.created
         add_created_aliases
