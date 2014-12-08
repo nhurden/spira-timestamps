@@ -22,8 +22,8 @@ module Spira
     end
 
     def update_timestamps
-      update_created if attributes.keys.include? 'created'
-      update_updated if attributes.keys.include? 'updated'
+      update_created
+      update_updated
     end
 
     def update_created
