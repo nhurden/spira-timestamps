@@ -22,15 +22,7 @@ module Spira
     end
 
     def update_timestamps
-      update_created
-      update_updated
-    end
-
-    def update_created
       self.created = self.created || DateTime.now
-    end
-
-    def update_updated
       self.updated = DateTime.now
     end
 
