@@ -22,8 +22,8 @@ module Spira
     end
 
     def update_timestamps
-      update_created if has_created?
-      update_updated if has_updated?
+      update_created if attributes.keys.include? 'created'
+      update_updated if attributes.keys.include? 'updated'
     end
 
     def update_created
@@ -32,14 +32,6 @@ module Spira
 
     def update_updated
       self.updated = DateTime.now
-    end
-
-    def has_created?
-      attributes.keys.include? 'created'
-    end
-
-    def has_updated?
-      attributes.keys.include? 'updated'
     end
 
     module ClassMethods
@@ -57,25 +49,15 @@ module Spira
       def add_created_aliases
         alias_attribute :created_at, :created
 
-        define_method("created_on") do
-          self.created && self.created.to_date
-        end
-
-        define_method("created_on=") do |date|
-          self.created = date && date.to_datetime
-        end
+        define_method("created_on") { self.created && self.created.to_date }
+        define_method("created_on=") { |date| self.created = date && date.to_datetime }
       end
 
       def add_updated_aliases
         alias_attribute :updated_at, :updated
 
-        define_method("updated_on") do
-          self.updated && self.updated.to_date
-        end
-
-        define_method("updated_on=") do |date|
-          self.updated = date && date.to_datetime
-        end
+        define_method("updated_on") { self.updated && self.updated.to_date }
+        define_method("updated_on=") { |date| self.updated = date && date.to_datetime }
       end
     end
   end
