@@ -120,7 +120,7 @@ describe "Spira::Timestamps" do
 
         configure :base_uri => "http://example.org/example/people"
         property :name, predicate: FOAF.name, type: String
-        timestamps :at, :on
+        timestamps
       end
     end
 

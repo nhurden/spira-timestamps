@@ -41,25 +41,12 @@ module Spira
     end
 
     module ClassMethods
-      def timestamps(*names)
-        raise ArgumentError, 'at least one of :at or :on is required' if names.empty?
+      def timestamps
+        property :created, predicate: RDF::DC.created
+        add_created_aliases
 
-        names.each do |name|
-          case name
-          when :created_at, :created_on
-            property :created, predicate: RDF::DC.created
-            add_created_aliases
-          when :updated_at, :updated_on
-            property :updated, predicate: RDF::DC.modified
-            add_updated_aliases
-          when :at
-            timestamps(:created_at, :updated_at)
-          when :on
-            timestamps(:created_on, :updated_on)
-          else
-            raise ArgumentError, "invalid timestamp argument: '#{name}'"
-          end
-        end
+        property :updated, predicate: RDF::DC.modified
+        add_updated_aliases
       end
 
       private
