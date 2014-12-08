@@ -1,6 +1,6 @@
-# Spira::Timestamps
+# spira-timestamps
 
-TODO: Write a gem description
+spira-timestamps adds automatic timestamps to your Spira models.
 
 ## Installation
 
@@ -20,7 +20,41 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+spira-timestamps adds `created` and `updated` `DateTime` attributes to
+your model with the Dublin Core
+[`created`](http://purl.org/dc/terms/created) and
+[`modified`](http://purl.org/dc/terms/modified) predicates.
+
+To add timestamps to a model, just add `include Spira::Timestamps` to
+your model class.
+
+For example:
+```ruby
+class Person < Spira::Base
+  include Spira::Timestamps
+
+  property :name, predicate: FOAF.name, type: String
+end
+```
+
+Timestamps are updated automatically when you `save` your model.
+
+You can access the timestamps either as `DateTime` objects via the
+`created_at` and `updated_at` properties or as `Date` objects via the
+`created_on` and `updated_on` properties. For example:
+
+    > bob = Person.new(name: 'Bob').save
+    => <Person:2170778720 @subject: _:g2170778680> 
+    > bob.created_at
+    => #<DateTime: 2014-12-08T20:48:27+11:00 ...>
+    > bob.created_on
+    => #<Date: 2014-12-08 ...>
+    > bob.touch
+    => <Person:2170778720 @subject: _:g2170778680> 
+    > bob.updated_at
+    => #<DateTime: 2014-12-08T20:49:41+11:00 ...>
+    > bob.updated_on
+    => #<Date: 2014-12-08 ...>
 
 ## Contributing
 
