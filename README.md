@@ -1,4 +1,4 @@
-# spira-timestamps [![Build Status](https://travis-ci.org/nhurden/spira-timestamps.svg?branch=develop)](https://travis-ci.org/nhurden/spira-timestamps)
+# spira-timestamps [![Build Status](https://travis-ci.org/nhurden/spira-timestamps.svg?branch=develop)](https://travis-ci.org/nhurden/spira-timestamps) [![Gem Version](https://badge.fury.io/rb/spira-timestamps.svg)](http://badge.fury.io/rb/spira-timestamps)
 
 Add automatic timestamps to your Spira models.
 
