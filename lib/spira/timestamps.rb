@@ -1,6 +1,7 @@
 # coding: utf-8
 
 require "spira/timestamps/version"
+require 'active_support/core_ext/object/try'
 
 module Spira
   module Timestamps
@@ -42,15 +43,15 @@ module Spira
       def add_created_aliases
         alias_attribute :created_at, :created
 
-        define_method("created_on") { self.created && self.created.to_date }
-        define_method("created_on=") { |date| self.created = date && date.to_datetime }
+        define_method("created_on") { self.created.try(:to_date) }
+        define_method("created_on=") { |date| self.created = date.try(:to_datetime) }
       end
 
       def add_updated_aliases
         alias_attribute :updated_at, :updated
 
-        define_method("updated_on") { self.updated && self.updated.to_date }
-        define_method("updated_on=") { |date| self.updated = date && date.to_datetime }
+        define_method("updated_on") { self.updated.try(:to_date) }
+        define_method("updated_on=") { |date| self.updated = date.try(:to_datetime) }
       end
     end
   end
