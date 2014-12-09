@@ -1,6 +1,10 @@
 # spira-timestamps
 
-spira-timestamps adds automatic timestamps to your Spira models.
+Add automatic timestamps to your Spira models.
+
+spira-timestamps adds `created` and `updated` `DateTime` attributes to
+your model with the Dublin Core [`created`](http://purl.org/dc/terms/created) and
+[`modified`](http://purl.org/dc/terms/modified) predicates.
 
 ## Installation
 
@@ -19,11 +23,6 @@ Or install it yourself as:
     $ gem install spira-timestamps
 
 ## Usage
-
-spira-timestamps adds `created` and `updated` `DateTime` attributes to
-your model with the Dublin Core
-[`created`](http://purl.org/dc/terms/created) and
-[`modified`](http://purl.org/dc/terms/modified) predicates.
 
 To add timestamps to a model, just add `include Spira::Timestamps` to
 your model class.
